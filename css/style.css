@@ -1,0 +1,184 @@
+/* Step 1: animating the logo in the header */
+
+@keyframes logo {
+    0% {
+        width: 25px;
+        opacity: 0;
+    }
+    100% {
+        width: 475px;
+        opacity: 1;
+    }
+}
+
+#logo {
+    width:25px;
+    opacity: 0;
+    animation: logo 5s forwards;
+}
+
+
+/* Step 2: Edit the body element to use the Poppins font (using Google fonts) with serif as a backup.  It should also use the image “concrete_seamless.png” as a background-image with a backup color of #f1f1f1. */
+
+body {
+    font-family: 'Poppins', serif;
+    background: #f1f1f1 url(../images/concrete_seamless.png)
+}
+
+
+/* Step 3: Edit the css for the header tag (all instances) to use flex to match our example. */
+header {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* Step 4: Edit the css for the nav_links class to use flex to match our example. Do not modify the list items or the links - modify the nav_links class to use flex.  */
+
+.nav_links {
+    display:flex;
+    flex-direction: column;
+}
+
+/* Step 5: Style the links so that they have the same color even after they have been visited. This is a “challenge” problem. You should not give or receive help when completing it. */
+
+.nav_item a:visited, .nav_item a:focus, .nav_item a:hover {
+    color:rgb(0, 0, 238);
+}
+
+
+
+/* Step 6: Identify the proper selector to style ONLY those header elements that are direct children of a card class.  The required styling is the following: 
+    background: #288088,
+    solid 2px border using #45ADAD,
+    20px of padding on the top and the bottom, 
+    50px border-radius on the top left and right corners.  */
+
+.card > header {
+    background:#288088;
+    border:2px solid #45ADAD;
+    padding: 20px 0;
+    border-radius: 50px 50px 0 0;
+}
+
+/* Step 7 and 8 Setting the flex layout for the cards */
+
+.pricing {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card {
+    width:450px;
+    border-radius: 50px 50px 0 0;
+
+}
+
+/* step 9 adding border and width styling to gallery images */
+
+.gallery img {
+    border:10px solid #50C7C7;
+    width:300px;
+    margin:10px;
+}
+
+/* Step 10: Setting gallery class to flex, with wrap, and center justify */
+
+.gallery {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;;
+}
+
+
+/* Step 11-13: setting navigation and header flex alignments for desktop view */
+
+@media screen and (min-width:900px) {
+    header, .nav_links {
+        flex-direction:row;
+        justify-content: space-between;
+    }
+
+    /* Setting the cards to center align on desktop, with a fixed width */
+
+    .pricing {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .card {
+        flex-basis:275px;
+    }
+
+    body > header {
+        position:sticky;
+        top:0;
+    }
+}
+
+
+/* Removes animations for those who have animations turned off */
+@media (prefers-reduced-motion) {
+    #logo {
+        animation-duration: 0s;
+    }
+}
+
+
+/* styles for print view */
+@media print {
+
+    body {
+        font-family:Arial, Helvetica;
+        background-image:none;
+    }
+
+    /* Following two set nav items to spread out horizontally */
+
+    nav {
+        width:100%;
+    }
+
+    .nav_links {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    /* cards are stacked :horizontally with a widht of 325px */
+
+    .pricing {
+        flex-direction: row;
+        align-items:flex-end;
+    }
+
+    .card {
+        border:2px solid #45ADDD;
+        flex-basis:325px;
+    }
+
+    .gallery, #gallery {
+        display:none;
+    }
+
+    /* every 2nd li item in .card will have a thumb up emoji after */
+
+    .card :nth-of-type(2)::after {
+        content: ' 👍';
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
